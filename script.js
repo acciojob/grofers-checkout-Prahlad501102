@@ -1,23 +1,22 @@
-function calculateTotalPrice() {
-    const priceElements = document.querySelectorAll('.prices');
-    let total = 0;
+// Select all price elements
+const prices = document.querySelectorAll(".prices");
 
-    priceElements.forEach(element => {
-        const price = parseFloat(element.textContent);
-        if (!isNaN(price)) {
-            total += price;
-        }
-    });
+let total = 0;
 
-    const table = document.querySelector('table');
-    const totalRow = document.createElement('tr');
-    const totalCell = document.createElement('td');
-    
-    totalCell.setAttribute('data-ns-test', 'grandTotal');
-    totalCell.textContent = total;
-    
-    totalRow.appendChild(totalCell);
-    table.appendChild(totalRow);
-}
+// Calculate total price
+prices.forEach(price => {
+  total += Number(price.textContent);
+});
 
-calculateTotalPrice();
+// Create new table row
+const table = document.querySelector("table");
+const row = document.createElement("tr");
+const cell = document.createElement("td");
+
+// Set attributes
+cell.colSpan = 2;
+cell.textContent = `Total Price: ${total}`;
+
+// Append elements
+row.appendChild(cell);
+table.appendChild(row);
