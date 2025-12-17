@@ -12,9 +12,9 @@ function calculateTotalPrice() {
     const table = document.querySelector('table');
     const totalRow = document.createElement('tr');
     const totalCell = document.createElement('td');
-
-    totalCell.textContent = total;
+    
     totalCell.setAttribute('data-ns-test', 'grandTotal');
+    totalCell.textContent = total;
     
     totalRow.appendChild(totalCell);
     table.appendChild(totalRow);
