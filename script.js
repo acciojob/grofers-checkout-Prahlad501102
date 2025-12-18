@@ -1,22 +1,19 @@
-// Select all price elements
+// select all price elements
 const prices = document.querySelectorAll(".prices");
 
 let total = 0;
 
-// Calculate total price
 prices.forEach(price => {
-  total += Number(price.textContent);
+  total += Number(price.innerText);
 });
 
-// Create new table row
+const tr = document.createElement("tr");
+
+const td = document.createElement("td");
+td.colSpan = 2; // assuming table has 2 columns (item + price)
+td.innerText = "Total Price: " + total;
+
+tr.appendChild(td);
+
 const table = document.querySelector("table");
-const row = document.createElement("tr");
-const cell = document.createElement("td");
-
-// Set attributes
-cell.colSpan = 2;
-cell.textContent = `Total Price: ${total}`;
-
-// Append elements
-row.appendChild(cell);
-table.appendChild(row);
+table.appendChild(tr);
